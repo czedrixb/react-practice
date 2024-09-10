@@ -1,4 +1,4 @@
-const Bloglist = ({ blogs, title }) => {
+const Bloglist = ({ blogs, title, handleDelete }) => {
   return (
     <div>
       <div className="text-xl font-bold">{title}</div>
@@ -7,7 +7,7 @@ const Bloglist = ({ blogs, title }) => {
           key={blog.id}
           className="relative flex flex-col mt-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96 hover:border-slate-300 hover:shadow-md rounded-lg transition-all cursor-pointer"
         >
-          <div className="p-4">
+          <div className="p-4 space-y-3">
             <h5 className="mb-2 text-slate-800 text-xl font-semibold">
               {blog.title}
             </h5>
@@ -15,6 +15,12 @@ const Bloglist = ({ blogs, title }) => {
             <p className="text-slate-600 leading-normal font-light">
               {blog.body}
             </p>
+            <button
+              onClick={() => handleDelete(blog.id)}
+              className="bg-red-500 hover:bg-red-700 text-white rounded p-2"
+            >
+              Delete Blog
+            </button>
           </div>
         </div>
       ))}
