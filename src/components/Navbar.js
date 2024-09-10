@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
@@ -12,19 +13,19 @@ const Navbar = () => {
       <nav className="container mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
           <div className="text-white font-bold text-xl">
-            <a href="/">Mini Blog</a>
+            <Link to="/">Mini Blog</Link>
           </div>
           <div className="hidden md:block">
             <ul className="flex items-center space-x-8">
               <li>
-                <a href="/" className="text-white">
+                <Link to="/" className="text-white">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/blog/create" className="text-white">
+                <Link to="/create" className="text-white">
                   Blogs
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -52,20 +53,20 @@ const Navbar = () => {
           <div className="mobile-menu md:hidden">
             <ul className="mt-4 space-y-4">
               <li>
-                <a
-                  href="/"
+                <Link
+                  to="/"
                   className="block px-4 py-2 text-white bg-gray-900 rounded"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/blogs/create"
+                <Link
+                  to="/create"
                   className="block px-4 py-2 text-white bg-gray-900 rounded"
                 >
                   About
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
