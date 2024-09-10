@@ -1,4 +1,4 @@
-const Bloglist = ({ blogs, title, handleDelete }) => {
+const Bloglist = ({ blogs, title }) => {
   return (
     <div>
       <div className="text-xl font-bold">{title}</div>
@@ -15,12 +15,6 @@ const Bloglist = ({ blogs, title, handleDelete }) => {
             <p className="text-slate-600 leading-normal font-light">
               {blog.body}
             </p>
-            <button
-              onClick={() => handleDelete(blog.id)}
-              className="bg-red-500 hover:bg-red-700 text-white rounded p-2"
-            >
-              Delete Blog
-            </button>
           </div>
         </div>
       ))}
