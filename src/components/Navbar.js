@@ -24,7 +24,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link to="/create" className="text-white">
-                  Blogs
+                  Create blog
                 </Link>
               </li>
             </ul>
@@ -65,7 +65,7 @@ const Navbar = () => {
                   to="/create"
                   className="block px-4 py-2 text-white bg-gray-900 rounded"
                 >
-                  About
+                  Create blog
                 </Link>
               </li>
             </ul>

@@ -1,27 +1,56 @@
 import { Link } from "react-router-dom";
 
-const Bloglist = ({ blogs, title }) => {
+const Bloglist = ({ blogs, handleDelete }) => {
   return (
     <div>
-      <div className="text-xl font-bold">{title}</div>
-      {blogs.map((blog) => (
-        <div
-          key={blog.id}
-          className="relative flex flex-col mt-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96 hover:border-slate-300 hover:shadow-md rounded-lg transition-all cursor-pointer"
-        >
-          <Link to={`/blogs/${blog.id}`}>
-            <div className="p-4 space-y-3">
-              <h5 className="mb-2 text-slate-800 text-xl font-semibold">
-                {blog.title}
-              </h5>
-              <p className="text-sm">Written by {blog.author}</p>
-              <p className="text-slate-600 leading-normal font-light">
-                {blog.body}
-              </p>
-            </div>
-          </Link>
-        </div>
-      ))}
+      <table className="w-full text-sm text-left rtl:text-right text-gray-">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+          <tr>
+            <th scope="col" className="px-6 py-3">
+              ID
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Title
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Body
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Author
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {blogs.map((blog) => (
+            <tr key={blog.id} className="bg-white border-b ">
+              <td className="px-6 py-4 font-semibold">{blog.id}</td>
+              <td className="px-6 py-4 font-semibold">{blog.title}</td>
+              <td className="px-6 py-4 font-semibold">{blog.body}</td>
+              <td className="px-6 py-4 font-semibold">{blog.author}</td>
+              <td className="px-6 py-4 font-semibold flex flex-col gap-y-1">
+                <Link
+                  to={`blogs/${blog.id}`}
+                  className="py-2 px-3 text-white bg-green-600 hover:bg-green-900 rounded text-center"
+                >
+                  View
+                </Link>
+                <button className="py-2 px-3 text-white bg-blue-600 hover:bg-blue-900 rounded">
+                  Edit
+                </button>
+                <button
+                  onClick={() => handleDelete(blog.id)}
+                  className="py-2 px-3 text-white bg-red-600 hover:bg-red-900 rounded"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

@@ -4,6 +4,11 @@ const useFetch = (url) => {
   const [data, setData] = useState(null);
   const [isPending, setisPending] = useState(true);
   const [error, setError] = useState(null);
+  const [shouldFetch, setShouldFetch] = useState(false);
+
+  const triggerFetch = () => {
+    setShouldFetch(!shouldFetch);
+  };
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -23,9 +28,9 @@ const useFetch = (url) => {
     };
 
     fetchBlogs();
-  }, [url]);
+  }, [url, shouldFetch]);
 
-  return { data, isPending, error };
+  return { data, isPending, error, triggerFetch };
 };
 
 export default useFetch;
